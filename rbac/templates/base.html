@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>users</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        .head {
+            width: 100%;
+            height: 60px;
+            background-color: #369;
+        }
+        .head p{
+            font-size: 20px;
+            color: white;
+        }
+
+        .menu {
+            position: fixed;
+            top: 60px;
+            bottom: 0;
+            width: 250px;
+            left: 0;
+            background-color: #a6e1ec;
+        }
+
+        .content {
+            position: fixed;
+            top: 60px;
+            bottom: 0;
+            right: 0;
+            left: 250px;
+            overflow: auto;
+        }
+        .link {
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="head">
+    <p>{{ user.name }}</p>
+</div>
+
+<div class="menu">
+    {% load my_tags %}
+    {% menu_func request%}
+</div>
+<div class="content">
+    {% block con %}
+
+
+    {% endblock %}
+</div>
+</body>
+</html>

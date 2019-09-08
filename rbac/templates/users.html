@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block con %}
+    <h3>查看员工</h3>
+    {% if '/users/add/' in permission_list %}
+        <a href="/users/add/" class="btn btn-primary">添加用户</a>
+    {% endif %}
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>职位</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in user_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ user.name }}</td>
+
+                <td>{% for role in user.roles.all %}
+                    {{ role.tilte }}
+                {% endfor %}</td>
+
+                <td>
+                    {% if '/users/delete/(\d+)/' in permission_list %}
+                        <a href="/users/delete/user.pk/">
+                            <button class="button btn-danger">删除</button>
+                        </a>
+                    {% endif %}
+
+                    {% if '/users/edit/(\d+)/' in permission_list %}
+                        <a href="/users/edit/user.pk/">
+                            <button class="button btn-warning">编辑</button>
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}
