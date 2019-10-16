@@ -1,19 +1,7 @@
-from django.test import TestCase
+import re
 
-# Create your tests here.
-# def num():
-#     a=[]
-#     for i in range(4):
-#         def foo(x,):
-#             return x*i
-#         a.append(foo)
-#     return a
-# print([m(2) for m in num()])
-
-
-# def foo(func):
-#
-#     def inner():
-#         func()
-#     return inner()
-
+ret = re.match('^/delete/(\d+)$','/delete/4')
+if ret:
+    print(True)
+else:
+    print(False)

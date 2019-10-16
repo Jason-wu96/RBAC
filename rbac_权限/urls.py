@@ -22,8 +22,8 @@ urlpatterns = [
     url(r'^login/$',views.login),
     url(r'^users/add/$',views.add_user),
     url(r'^users/$',views.users),
-    url(r'^users/delete/$',views.delete_users),
-    url(r'^users/edit/$',views.edit_users),
+    url(r'^users/delete/(\d+)/$',views.delete_users),
+    url(r'^users/edit/(\d+)/$',views.edit_users),
     url(r'^roles/$', views.roles),
 ]
 

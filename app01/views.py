@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse,redirect
 from rbac.models import *
 from rbac.server.permission_session import *
 
@@ -13,7 +13,7 @@ def login(request):
             request.session['user_id'] = user.pk
             #调用rbac里面的permission_session中的函数
             init_permission(user,request)
-            return HttpResponse('登陆成功')
+            return redirect('/users/')
         else:
             return render(request, 'login.html')
     return render(request,'login.html')
@@ -34,12 +34,12 @@ def users(request):
     return render(request,'users.html',locals())
 
 
-def delete_users(request):
-    pass
+def delete_users(request,pk):
+    return HttpResponse('delete')
 
 
-def edit_users(request):
-    pass
+def edit_users(request,pk):
+    return HttpResponse('edit')
 
 
 def roles(request):
