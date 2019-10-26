@@ -1,12 +1,14 @@
-# 查看当前登录用户的所有权限
+"""
+权限注册
+"""
+
+# 注册当前登录用户的所有权限
 def init_permission(user, request):
     permissions = user.roles.all().values("permissions__url").distinct()
     permission_list = []
     for item in permissions:
         permission_list.append(item['permissions__url'])
-
     request.session['permission_list'] = permission_list
-
     # 菜单权限注册
     permission = user.roles.all().values("permissions__url", "permissions__action", "permissions__group__title").distinct()
     menu_permission = []
