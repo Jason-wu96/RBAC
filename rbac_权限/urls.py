@@ -26,10 +26,3 @@ urlpatterns = [
     url(r'^users/edit/(\d+)/$',views.edit_users),
     url(r'^roles/$', views.roles),
 ]
-
-# if settings.DEBUG:
-#     import debug_toolbar
-#
-#     urlpatterns = [
-#         url(r'^__debug__/',include(debug_toolbar.urls)),
-#     ]+urlpatterns
