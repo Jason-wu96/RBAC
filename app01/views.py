@@ -1,8 +1,12 @@
+"""
+权限组件功能测试
+"""
+
 from django.shortcuts import render, HttpResponse,redirect
 from rbac.models import *
 from rbac.server.permission_session import *
 
-
+#  登录页面
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('user')
@@ -18,13 +22,7 @@ def login(request):
             return render(request, 'login.html')
     return render(request,'login.html')
 
-
-#添加员工
-def add_user(request):
-    return render(request, 'add_users.html')
-
-
-#查看员工
+# 查看员工
 def users(request):
     user_list = User.objects.all()
     id = request.session['user_id']
@@ -33,15 +31,19 @@ def users(request):
     menu_permission = request.session.get("menu_permission")
     return render(request,'users.html',locals())
 
+# 添加员工 （可以用form组件做，但是此处由于辅助测试，简单而过）
+def add_user(request):
+    return HttpResponse('add')
 
+# 删除员工（由于测试用的没有做的太过仔细）
 def delete_users(request,pk):
     return HttpResponse('delete')
 
-
+# 编辑 （同上）
 def edit_users(request,pk):
     return HttpResponse('edit')
 
-
+# 角色页面
 def roles(request):
     role_list = Role.objects.all()
     permission_list = request.session.get('permission_list')
